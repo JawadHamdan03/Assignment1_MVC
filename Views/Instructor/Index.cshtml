@@ -1,0 +1,34 @@
+﻿@model List<Instructor>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table class="table table-bordered table-hover">
+
+    <thead>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Image</td>
+        <td>Salary</td>
+        <td>Address</td>
+        <td>Department</td>
+        <td>Course</td>
+    </thead>
+
+    <tbody>
+        @foreach(var item in Model){
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+                <td><img style="width:80px" src="~/images/@item.ImageURL" /></td>
+            <td>@item.Salary</td>
+            <td>@item.Address</td>
+            <td>@item.Department.Name</td>
+            <td>@item.Course.Name</td>
+        </tr>}
+    </tbody>
+
+
+</table>
