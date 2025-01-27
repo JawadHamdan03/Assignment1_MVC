@@ -1,0 +1,47 @@
+﻿@model List<Department>
+@{
+    ViewData["Title"] = "AddInstructor";
+}
+
+<h1 class="mb-4 text-center">Add a New Instructor</h1>
+
+<form action="/Instructor/SaveAdd" method="get" class="container bg-light p-4 rounded shadow">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input id="name" name="Name" type="text" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label for="salary" class="form-label">Salary</label>
+        <input id="salary" name="Salary" type="number" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label for="address" class="form-label">Address</label>
+        <input id="address" name="Address" type="text" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label for="department" class="form-label">Department</label>
+        <select id="department" name="departmentId" class="form-select">
+            @foreach (var item in Model)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="course" class="form-label">Course</label>
+        <select id="course" name="courseId" class="form-select">
+            @foreach (var item in ViewBag.Courses)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="text-center">
+        <input type="submit" value="Add and Save" class="btn btn-primary w-100" />
+    </div>
+</form>

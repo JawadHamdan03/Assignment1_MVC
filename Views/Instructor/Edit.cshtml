@@ -1,0 +1,61 @@
+﻿@model Instructor
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="mb-4 text-center">Edit Instructor</h1>
+
+<form action="/instructor/SaveEdit/@Model.Id" method="get" class="container bg-light p-4 rounded shadow">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input id="name" name="Name" type="text" value="@Model.Name" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label for="salary" class="form-label">Salary</label>
+        <input id="salary" name="Salary" type="number" value="@Model.Salary" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label for="address" class="form-label">Address</label>
+        <input id="address" name="Address" type="text" value="@Model.Address" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label for="department" class="form-label">Department</label>
+        <select id="department" name="departmentId" class="form-select">
+            @foreach (var item in ViewBag.Departments)
+            {
+                @if (item.Name == ViewBag.department)
+                {
+                    <option value="@item.Id" selected>@item.Name</option>
+                }
+                else
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="course" class="form-label">Course</label>
+        <select id="course" name="courseId" class="form-select">
+            @foreach (var item in ViewBag.Courses)
+            {
+                @if (item.Name == ViewBag.Course)
+                {
+                    <option value="@item.Id" selected>@item.Name</option>
+                }
+                else
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            }
+        </select>
+    </div>
+
+    <div class="text-center">
+        <input type="submit" value="Edit and Save" class="btn btn-primary w-100" />
+    </div>
+</form>
