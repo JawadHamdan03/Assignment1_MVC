@@ -12,10 +12,6 @@ namespace Assignment1.Controllers
             List<Instructor> InstructorsModel= DB.Instructors.Include(I=> I.Department).Include(i=> i.Course).ToList();
             return View("Index", InstructorsModel);
         }
-
-
-
-
         public IActionResult Details(int id)
         {
             Instructor instructorModel= DB.Instructors.Include(i=>i.Course).Include(i=>i.Department).FirstOrDefault(i=> i.Id==id);

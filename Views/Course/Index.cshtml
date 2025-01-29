@@ -1,0 +1,41 @@
+﻿@model List<Course>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<a asp-action="AddCourse" asp-controller="Course" class="btn btn-success">Add a New Course</a>
+
+
+<form method="post" asp-action="Search" asp-controller="Course" class="d-flex align-items-center">
+    <label  class="me-2">Search by Name</label>
+    <input name="Name"  class="form-control me-2" style="width: auto;" />
+    <input type="submit" value="Search By Name" class="btn btn-secondary" />
+</form>
+<table class="table table-bordered table-hover">
+
+    <thead>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Degree</th>
+        <th>MinDegree</th>
+        <th>Department</th>
+    </thead>
+    <tbody>
+        @foreach(var item in Model){
+            <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.Degree</td>
+            <td>@item.MinDegree</td>
+            <td>@item.Department.Name</td>
+                <td><a class="btn btn-secondary" asp-action="Edit" asp-controller="Course" asp-route-Id="@item.Id">Edit</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-controller="Course" asp-route-Id="@item.Id">Delete</a>   </td>
+            </tr>
+        }
+    </tbody>
+
+
+
+</table>
